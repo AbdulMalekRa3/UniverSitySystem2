@@ -11,6 +11,7 @@ namespace University.Core.Autofac
             .Where(t => t.Name.EndsWith("Service"))
             .AsImplementedInterfaces()
             .PropertiesAutowired();
+
         }
     }
 }

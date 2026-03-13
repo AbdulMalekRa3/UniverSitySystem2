@@ -1,4 +1,5 @@
 ﻿using AutoWrapper.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using University.Core.DTOs;
@@ -22,6 +23,7 @@ namespace UniverSity.Api.Controllers
         }
 
         [HttpGet("{id}")]
+            [Authorize(Roles = "Teacher")]
         [ProducesResponseType(typeof(CourseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -33,6 +35,7 @@ namespace UniverSity.Api.Controllers
         
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         [ProducesResponseType(typeof(List<CourseDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse GetAll()
